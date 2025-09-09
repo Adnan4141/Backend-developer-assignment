@@ -1,5 +1,5 @@
 
-import PurchaseModel from "../models/PurchaseModel.js";
+import PurchaseModel from "../models/Purchase.js";
 import UserModel from "../models/UserModel.js";
 import errorHandler from "../utils/errorHandler.js";
 import ResponseHandler from "../utils/ResponseHandler/ResponseHandler.js";
@@ -45,19 +45,3 @@ export const updateUser = async (req, res, next) => {
 };
 
 
-export const getUserPurchases = async (req, res, next) => {
-  try {
-    const purchases = await PurchaseModel.find({ userId: req.user._id })
-      .populate("courseId", "title price instructor")
-      .sort({ createdAt: -1 });
-
-    return ResponseHandler(
-      res,
-      200,
-      { purchases },
-      "User purchases fetched successfully"
-    );
-  } catch (err) {
-    next(err);
-  }
-};

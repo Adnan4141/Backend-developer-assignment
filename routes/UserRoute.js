@@ -1,12 +1,12 @@
 import express from "express";
-import { getProfile, getUserPurchases, updateUser } from "../controllers/userController";
-import { isAuthenticated } from "../middleware/isAuthenticated";
+import { getProfile,  updateUser } from "../controllers/userController.js";
+import { isAuthenticated } from "../middleware/isAuthenticated.js";
+import { getUserPurchases } from "../controllers/purchaseController.js";
+import { getAllCourses, getCourseById } from "../controllers/courseController.js";
 
 const userRouter = express.Router();
 
-// -------- PUBLIC COURSES ---------------
-userRouter.get("/courses", getAllCourses);
-userRouter.get("/courses/:id", getCourseById);
+
 
 // --------- PROTECTED USER ROUTES -----------
 userRouter.use(isAuthenticated);

@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
-import errorHandler from "../utils/errorHandler";
-import UserModel from "../models/UserModel";
-import { generateAccessToken, generateRefreshToken } from "../utils/generatToken/GenreateToken";
+import errorHandler from "../utils/errorHandler.js";
+import UserModel from "../models/UserModel.js";
+import { generateAccessToken, generateRefreshToken } from "../utils/generatToken/GenreateToken.js";
+import ResponseHandler from "../utils/ResponseHandler/ResponseHandler.js";
 
 
 
@@ -16,12 +17,12 @@ export const register = async (req, res, next) => {
 
     const user = await UserModel.create({ name, email, password, role });
 
-    return successHandler(
+    return ResponseHandler(
       res,
       201,
       {
         user: {
-          _id,
+          _id:user._id,
           name: user.name,
           email: user.email,
           role: user.role,
@@ -59,15 +60,15 @@ export const login = async (req, res, next) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 15 * 60 * 1000, // 15 minutes
+      maxAge: 30 * 60 * 1000, // 30 minutes
     });
 
-    return successHandler(
+    return ResponseHandler(
       res,
       200,
       {
         user: {
-          _id,
+          _id:user._id,
           name: user.name,
           email: user.email,
           role: user.role,
@@ -108,7 +109,7 @@ export const refresh = async (req, res, next) => {
         maxAge: 15 * 60 * 1000, 
       });
 
-      return successHandler(
+      return ResponseHandler(
         res,
         200,
         { refreshToken: newRefreshToken },
@@ -140,7 +141,7 @@ export const logout = async (req, res, next) => {
       sameSite: "strict",
     });
 
-    return successHandler(res, 200, {}, "Logged out successfully");
+    return ResponseHandler(res, 200, {}, "Logged out successfully");
   } catch (err) {
     next(err);
   }

@@ -1,7 +1,7 @@
 import express from "express";
-import { createCourse, deleteCourse, getAllCourses, getCourseById, updateCourse } from "../controllers/courseController";
-import { isAdmin } from "../middleware/isAdmin";
-import { isAuthenticated } from "../middleware/isAuthenticated";
+import { createCourse, deleteCourse, getAllCourses, getCourseById, updateCourse } from "../controllers/courseController.js";
+import { isAdmin } from "../middleware/isAdmin.js";
+import { isAuthenticated } from "../middleware/isAuthenticated.js";
 
 
 const courseRouter = express.Router();
@@ -11,7 +11,7 @@ courseRouter.get("/", getAllCourses);
 courseRouter.get("/:id", getCourseById);
 
 //--------ADMIN PROTECTED ROUTES ------------
-courseRouter.use(isAuthenticated, isAdmin);
+// courseRouter.use(isAuthenticated, isAdmin);
 
 courseRouter.post("/", createCourse);
 courseRouter.put("/:id", updateCourse);

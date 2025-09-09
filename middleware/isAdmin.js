@@ -1,4 +1,4 @@
-import errorHandler from "../utils/errorHandler";
+import errorHandler from "../utils/errorHandler.js";
 
 
 export const isAdmin = (req, res, next) => {

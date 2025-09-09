@@ -1,6 +1,6 @@
-import CourseModel from "../models/CourseModel";
-import errorHandler from "../utils/errorHandler";
-import ResponseHandler from "../utils/ResponseHandler/ResponseHandler";
+import CourseModel from "../models/CourseModel.js";
+import errorHandler from "../utils/errorHandler.js";
+import ResponseHandler from "../utils/ResponseHandler/ResponseHandler.js";
 
 
 
@@ -37,7 +37,7 @@ export const getAllCourses = async (req, res, next) => {
   }
 };
 
-// ================= GET SINGLE COURSE =================
+
 export const getCourseById = async (req, res, next) => {
   try {
     const course = await CourseModel.findById(req.params.id);
