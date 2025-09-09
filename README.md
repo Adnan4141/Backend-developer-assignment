@@ -7,7 +7,7 @@ Follow these steps to run the Course Management System API locally:
 1.  **Clone Repository**
 
     ```bash
-    git clone https://github.com/Adnan4141/course-management-api.git
+    git clone https://github.com/Mark4141/course-management-api.git
     cd course-management-api
     ```
 
@@ -94,7 +94,7 @@ Follow these steps to run the Course Management System API locally:
 
 ```json
 {
-  "email": "adnan@gmail.com",
+  "email": "Mark@gmail.com",
   "password": "123456"
 }
 ```
@@ -206,7 +206,7 @@ Cookie: access_token=your-jwt-token
 
 ```json
 {
-  "name": "Adnan Hossain"
+  "name": "Mark Hossain"
 }
 ```
 
@@ -219,7 +219,7 @@ Cookie: access_token=your-jwt-token
   "message": "User profile updated successfully",
   "data": {
     "_id": "68c04cf71a21e27fdbd008b4",
-    "name": "Adnan Hossain",
+    "name": "Mark Hossain",
     "email": "john@gmail.com",
     "role": "user"
   }
