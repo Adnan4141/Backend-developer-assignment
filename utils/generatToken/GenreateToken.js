@@ -1,14 +1,20 @@
-import jwt from "jsonwebtoken";
 
 
 
-export const generatedToken = async (data) => {
-  if (!process.env.JWT_SECRET)
-    return console.log("provide the JWT Secret key for generating token");
-      
 
-  const newToken = jwt.sign({ _id: data._id,isAdmin:data?.isAdmin }, process.env.JWT_SECRET, {
-    expiresIn: "2d",
-  });
-  return newToken
+
+export const generateRefreshToken = (user) => {
+  return jwt.sign(
+    { id: user._id },
+    process.env.JWT_REFRESH_SECRET,
+    { expiresIn: "7d" }
+  );
+};
+
+export const generateAccessToken = (user) => {
+  return jwt.sign(
+    { id: user._id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: "15m" }
+  );
 };
